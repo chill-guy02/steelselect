@@ -35,8 +35,9 @@ export const emptyRequirements: UserRequirements = {
 
 export const APPLICATION_OPTIONS: { value: Application; label: string }[] = [
   { value: "construction", label: "Construction" },
-  { value: "machine-parts", label: "Machine Parts" },
+  { value: "consumer-products", label: "Consumer Products" },
   { value: "shipbuilding", label: "Shipbuilding" },
+  { value: "railways", label: "Railways" },
   { value: "other", label: "Other" },
 ];
 
