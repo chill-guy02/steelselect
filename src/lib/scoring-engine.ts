@@ -277,35 +277,45 @@ export function recommend(req: RecommendRequest): RecommendResponse {
     ? (["UTS", "corrosion", "hardness", "weldability", "formability", "cost"] as ParamKey[])
     : active;
 
-  const rawWeights: Record<string, number> = {};
+  const rawWeights = new Map<ParamKey, number>();
   for (const p of scoringParams) {
-    rawWeights[p] = p === "temperature" ? TEMPERATURE_WEIGHT : profile[p as keyof WeightProfile];
+    rawWeights.set(p, p === "temperature" ? TEMPERATURE_WEIGHT : profile[p as keyof WeightProfile]);
   }
-  const weightSum = Object.values(rawWeights).reduce((a, b) => a + b, 0);
-  const weights: Record<string, number> = {};
-  for (const p of scoringParams) weights[p] = rawWeights[p] / weightSum;
+  const weightSum = [...rawWeights.values()].reduce((a, b) => a + b, 0);
+  const weights = new Map<ParamKey, number>();
+  for (const p of scoringParams) weights.set(p, (rawWeights.get(p) ?? 0) / weightSum);
 
   // 6. Normalize each property relative to the surviving set.
-  const normalized: Record<string, number[]> = {
-    UTS: normalizeSet(survivors.map((g) => (g.uts + g.ys) / 2)),
-    corrosion: normalizeSet(survivors.map((g) => g.pren)),
-    hardness: normalizeSet(
-      survivors.map((g) =>
-        req.hardness != null ? -Math.abs(g.hardness - req.hardness) : g.hardness,
+  const normalized = new Map<ParamKey, number[]>([
+    ["UTS", normalizeSet(survivors.map((g) => (g.uts + g.ys) / 2))],
+    ["corrosion", normalizeSet(survivors.map((g) => g.pren))],
+    [
+      "hardness",
+      normalizeSet(
+        survivors.map((g) =>
+          req.hardness != null ? -Math.abs(g.hardness - req.hardness) : g.hardness,
+        ),
       ),
-    ),
-    temperature: normalizeSet(survivors.map((g) => tempSuitability(g, req.min_temp ?? null, req.max_temp ?? null))),
-    weldability: normalizeSet(survivors.map((g) => g.weldability)),
-    formability: normalizeSet(survivors.map((g) => g.formability)),
-    cost: normalizeSet(survivors.map((g) => g.cost)),
-  };
+    ],
+    [
+      "temperature",
+      normalizeSet(
+        survivors.map((g) => tempSuitability(g, req.min_temp ?? null, req.max_temp ?? null)),
+      ),
+    ],
+    ["weldability", normalizeSet(survivors.map((g) => g.weldability))],
+    ["formability", normalizeSet(survivors.map((g) => g.formability))],
+    ["cost", normalizeSet(survivors.map((g) => g.cost))],
+  ]);
+
+  const at = (p: ParamKey, i: number) => normalized.get(p)?.[i] ?? 0;
 
   const scored = survivors.map((g, i) => {
     let score = 0;
     const parameter_scores: Partial<Record<ParamKey, number>> = {};
     for (const p of scoringParams) {
-      const n = normalized[p][i];
-      score += weights[p] * n;
+      const n = at(p, i);
+      score += (weights.get(p) ?? 0) * n;
       parameter_scores[p] = Math.round(n * 100);
     }
     return {
@@ -313,12 +323,13 @@ export function recommend(req: RecommendRequest): RecommendResponse {
       score: Math.round(clamp01(score) * 100),
       parameter_scores,
       bars: {
-        strength: Math.round(normalized.UTS[i] * 100),
-        corrosion: Math.round(normalized.corrosion[i] * 100),
-        temp: Math.round(normalized.temperature[i] * 100),
+        strength: Math.round(at("UTS", i) * 100),
+        corrosion: Math.round(at("corrosion", i) * 100),
+        temp: Math.round(at("temperature", i) * 100),
       },
     };
   });
+
 
   // 7. One entry per base grade name — keep the highest scoring variant.
   const byBase = new Map<string, (typeof scored)[number]>();
