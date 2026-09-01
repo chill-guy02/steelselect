@@ -168,7 +168,7 @@ export function RequirementsForm({ value, onChange, onSubmit, loading }: Props) 
             </select>
           </Field>
 
-          <Field label="Impact Toughness" unit="J">
+          <Field label="Brinell hardness">
             <input
               type="number"
               inputMode="decimal"
