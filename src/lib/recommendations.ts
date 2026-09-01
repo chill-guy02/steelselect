@@ -6,7 +6,7 @@
  * swapped for an API call without touching any component.
  */
 
-export type Application = "construction" | "consumer-products" | "shipbuilding" | "railways" | "other";
+export type Application = "construction" | "consumer-products" | "shipbuilding" | "railways" | "automobiles" | "other";
 export type CorrosionResistance = "low" | "medium" | "high" | "very-high";
 
 export interface UserRequirements {
@@ -38,6 +38,7 @@ export const APPLICATION_OPTIONS: { value: Application; label: string }[] = [
   { value: "consumer-products", label: "Consumer Products" },
   { value: "shipbuilding", label: "Shipbuilding" },
   { value: "railways", label: "Railways" },
+  { value: "automobiles", label: "Automobiles" },
   { value: "other", label: "Other" },
 ];
 
