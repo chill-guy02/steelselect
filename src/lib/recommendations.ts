@@ -6,7 +6,7 @@
  * swapped for an API call without touching any component.
  */
 
-export type Application = "construction" | "machine-parts" | "shipbuilding" | "other";
+export type Application = "construction" | "consumer-products" | "shipbuilding" | "railways" | "other";
 export type CorrosionResistance = "low" | "medium" | "high" | "very-high";
 
 export interface UserRequirements {
