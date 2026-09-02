@@ -1,13 +1,17 @@
 /**
  * Recommendation data layer.
  *
- * `getRecommendations` is the single seam between the UI and the (future)
- * backend recommendation engine. Today it returns mock data; later it can be
- * swapped for an API call without touching any component.
+ * Single seam between the UI and the scoring engine. `getRecommendations`
+ * calls the `recommendGrades` server function, which runs the real engine over
+ * the stainless-steel database (no mock data).
  */
+
+import { recommendGrades } from "./recommend.functions";
+import type { PrenIndex, RecommendResponse, RecommendedGrade } from "./scoring-engine";
 
 export type Application = "construction" | "consumer-products" | "shipbuilding" | "railways" | "automobiles" | "other";
 export type CorrosionResistance = "low" | "medium" | "high" | "very-high";
+
 
 export interface UserRequirements {
   application: Application | null;
