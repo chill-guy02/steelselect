@@ -23,7 +23,7 @@ function summarize(req: UserRequirements) {
   const cor = CORROSION_OPTIONS.find((o) => o.value === req.corrosionResistance);
   if (cor) items.push({ label: "Corrosion Resistance", value: cor.label });
   if (req.impactToughness !== null)
-    items.push({ label: "Impact Toughness", value: `${req.impactToughness} J` });
+    items.push({ label: "Brinell Hardness", value: `${req.impactToughness} HB` });
   if (req.operatingTemperatureMin !== null)
     items.push({ label: "Min. Temperature", value: `${req.operatingTemperatureMin} °C` });
   if (req.operatingTemperatureMax !== null)
