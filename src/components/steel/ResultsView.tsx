@@ -88,27 +88,47 @@ export function ResultsView({
         </div>
       </section>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        {result.recommendations.map((rec, i) => (
-          <GradeCard
-            key={rec.grade}
-            rec={rec}
-            best={i === 0}
-            consideredOptional={result.consideredOptional}
-            onViewDetails={() => setDetail(rec)}
-          />
-        ))}
-      </div>
+      {result.error ? (
+        <section className="rounded-xl border border-destructive/30 bg-destructive/5 p-6">
+          <h2 className="font-display text-lg font-bold text-destructive">{result.error}</h2>
+          {result.failedOn?.length ? (
+            <p className="mt-2 text-sm text-muted-foreground">
+              Most restrictive criteria: {result.failedOn.join(", ")}. Try relaxing these values.
+            </p>
+          ) : null}
+        </section>
+      ) : (
+        <>
+          {result.confidence ? (
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">
+              Confidence:{" "}
+              <span className="font-semibold text-primary">{result.confidence}</span>
+            </p>
+          ) : null}
 
-      <section>
-        <h2 className="mb-4 font-display text-xl font-bold text-foreground">
-          Side-by-side comparison
-        </h2>
-        <ComparisonTable
-          recommendations={result.recommendations}
-          consideredOptional={result.consideredOptional}
-        />
-      </section>
+          <div className="grid gap-6 lg:grid-cols-3">
+            {result.recommendations.map((rec, i) => (
+              <GradeCard
+                key={rec.grade}
+                rec={rec}
+                best={i === 0}
+                consideredOptional={result.consideredOptional}
+                onViewDetails={() => setDetail(rec)}
+              />
+            ))}
+          </div>
+
+          <section>
+            <h2 className="mb-4 font-display text-xl font-bold text-foreground">
+              Side-by-side comparison
+            </h2>
+            <ComparisonTable
+              recommendations={result.recommendations}
+              consideredOptional={result.consideredOptional}
+            />
+          </section>
+        </>
+      )}
 
       <GradeDetailsDialog
         grade={detail}
