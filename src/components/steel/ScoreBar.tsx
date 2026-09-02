@@ -6,29 +6,38 @@ export function ScoreBar({
   className,
 }: {
   label: string;
-  score: number;
+  score: number | null;
   className?: string;
 }) {
+  const unavailable = score === null;
   return (
     <div className={className}>
       <div className="mb-1 flex items-baseline justify-between gap-2">
         <span className="text-xs font-medium text-muted-foreground">{label}</span>
-        <span className="font-display text-xs font-semibold tabular-nums text-foreground">
-          {score}
+        <span
+          className={cn(
+            "font-display text-xs font-semibold tabular-nums text-foreground",
+            unavailable && "text-[10px] font-normal italic tabular-nums text-muted-foreground",
+          )}
+        >
+          {unavailable ? "Data not available" : score}
         </span>
       </div>
       <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
-        <div
-          className={cn(
-            "h-full rounded-full transition-[width] duration-700",
-            score >= 70 ? "bg-gradient-primary" : "bg-muted-foreground/50",
-          )}
-          style={{ width: `${Math.max(0, Math.min(100, score))}%` }}
-        />
+        {unavailable ? null : (
+          <div
+            className={cn(
+              "h-full rounded-full transition-[width] duration-700",
+              score >= 70 ? "bg-gradient-primary" : "bg-muted-foreground/50",
+            )}
+            style={{ width: `${Math.max(0, Math.min(100, score))}%` }}
+          />
+        )}
       </div>
     </div>
   );
 }
+
 
 export function ScoreDial({ score }: { score: number }) {
   const r = 30;

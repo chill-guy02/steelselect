@@ -1,13 +1,17 @@
 /**
  * Recommendation data layer.
  *
- * `getRecommendations` is the single seam between the UI and the (future)
- * backend recommendation engine. Today it returns mock data; later it can be
- * swapped for an API call without touching any component.
+ * Single seam between the UI and the scoring engine. `getRecommendations`
+ * calls the `recommendGrades` server function, which runs the real engine over
+ * the stainless-steel database (no mock data).
  */
+
+import { recommendGrades } from "./recommend.functions";
+import type { PrenIndex, RecommendResponse, RecommendedGrade } from "./scoring-engine";
 
 export type Application = "construction" | "consumer-products" | "shipbuilding" | "railways" | "automobiles" | "other";
 export type CorrosionResistance = "low" | "medium" | "high" | "very-high";
+
 
 export interface UserRequirements {
   application: Application | null;
@@ -86,7 +90,8 @@ export interface GradeRecommendation {
   grade: string;
   family: string;
   overallScore: number;
-  scores: Record<ScoreKey, number>;
+  /** null => data not available for that parameter (e.g. toughness). */
+  scores: Record<ScoreKey, number | null>;
   whyRecommended: string;
   tradeoffs: Tradeoff[];
   applications: string[];
@@ -97,135 +102,120 @@ export interface RecommendationResult {
   recommendations: GradeRecommendation[];
   /** Optional parameters the user asked us to weigh in. */
   consideredOptional: OptionalScoreKey[];
+  confidence?: "Baseline" | "Standard" | "High";
+  /** Set when the hard filters eliminated every grade. */
+  error?: string;
+  failedOn?: string[];
 }
 
-const MOCK_GRADES: GradeRecommendation[] = [
-  {
-    grade: "SS 304",
-    family: "Austenitic (18/8 chromium-nickel)",
-    overallScore: 92,
+/** UI application values -> engine weight-profile keys. */
+const APPLICATION_PROFILE: Record<Application, string> = {
+  construction: "Construction",
+  shipbuilding: "Shipbuilding",
+  automobiles: "Automotive / Mobility",
+  railways: "Railways",
+  "consumer-products": "Consumer Products",
+  other: "Construction",
+};
+
+const CORROSION_TO_PREN: Record<CorrosionResistance, PrenIndex> = {
+  low: "Low",
+  medium: "Medium",
+  high: "High",
+  "very-high": "High",
+};
+
+const PARAM_LABELS: Record<string, string> = {
+  UTS: "Minimum UTS",
+  corrosion: "Corrosion resistance",
+  hardness: "Brinell hardness",
+  temperature: "Service temperature",
+  weldability: "Weldability",
+  formability: "Formability",
+  cost: "Cost",
+};
+
+function toGrade(g: RecommendedGrade): GradeRecommendation {
+  const d = g.details;
+  return {
+    grade: g.name,
+    family: [g.type, g.common_name].filter(Boolean).join(" — "),
+    overallScore: g.final_score,
     scores: {
-      strength: 78,
-      corrosionResistance: 88,
-      impactToughness: 90,
-      temperatureSuitability: 86,
-      weldability: 93,
-      formability: 95,
-      cost: 74,
+      strength: g.strength_bar,
+      corrosionResistance: g.corrosion_bar,
+      impactToughness: g.toughness_bar,
+      temperatureSuitability: g.temp_bar,
+      weldability: g.parameter_scores.weldability ?? d.weldability_score,
+      formability: g.parameter_scores.formability ?? d.formability_score,
+      cost: g.parameter_scores.cost ?? d.cost_score,
     },
-    whyRecommended:
-      "Strong overall fit for construction applications with excellent corrosion resistance and good formability, while remaining widely available in standard sections and sheet.",
-    tradeoffs: [
-      { type: "positive", text: "Excellent corrosion resistance in atmospheric service" },
-      { type: "positive", text: "Good formability and straightforward welding" },
-      { type: "caution", text: "Higher cost than SS 410" },
-      { type: "caution", text: "Lower yield strength than martensitic grades" },
-    ],
-    applications: [
-      "Structural cladding and architectural trim",
-      "Food and beverage equipment",
-      "General fabrication and tanks",
-      "Kitchen and sanitary fittings",
-    ],
+    whyRecommended: g.why_this_grade,
+    tradeoffs: g.trade_offs.map((text) => ({ type: "positive" as const, text })),
+    applications: d.description ? [d.description] : [],
     properties: [
-      { label: "Typical UTS", value: "515 – 620 MPa" },
-      { label: "Yield strength (0.2%)", value: "≥ 205 MPa" },
-      { label: "Impact toughness", value: "≈ 120 J at -40 °C" },
-      { label: "Service temperature", value: "-196 °C to 870 °C" },
-      { label: "Magnetic response", value: "Non-magnetic (annealed)" },
+      { label: "Ultimate tensile strength", value: `${d.uts} MPa` },
+      { label: "Yield strength", value: `${d.ys} MPa` },
+      { label: "Brinell hardness", value: `${d.hardness} HB` },
+      { label: "PREN", value: `${d.pren} (${d.pren_index})` },
+      {
+        label: "Service temperature",
+        value: `${d.min_service_temp} °C to ${d.max_service_temp} °C`,
+      },
+      { label: "Weldability score", value: `${d.weldability_score} / 100` },
+      { label: "Formability score", value: `${d.formability_score} / 100` },
+      { label: "Cost score", value: `${d.cost_score} / 100` },
+      { label: "Standard", value: d.standard || "—" },
+      { label: "Condition / treatment", value: d.treatment || "—" },
     ],
-  },
-  {
-    grade: "SS 316L",
-    family: "Austenitic (molybdenum-bearing, low carbon)",
-    overallScore: 88,
-    scores: {
-      strength: 76,
-      corrosionResistance: 96,
-      impactToughness: 91,
-      temperatureSuitability: 88,
-      weldability: 96,
-      formability: 90,
-      cost: 58,
-    },
-    whyRecommended:
-      "Best choice where chloride exposure or marine conditions are expected — the molybdenum addition markedly improves pitting resistance, and the low-carbon chemistry avoids weld sensitisation.",
-    tradeoffs: [
-      { type: "positive", text: "Superior pitting and crevice corrosion resistance" },
-      { type: "positive", text: "Excellent weldability with no post-weld annealing needed" },
-      { type: "caution", text: "Noticeably more expensive than SS 304" },
-      { type: "caution", text: "Similar strength to 304, so no structural gain" },
-    ],
-    applications: [
-      "Marine and offshore hardware",
-      "Chemical and pharmaceutical process equipment",
-      "Coastal architectural fixings",
-      "Heat exchangers and pressure vessels",
-    ],
-    properties: [
-      { label: "Typical UTS", value: "485 – 620 MPa" },
-      { label: "Yield strength (0.2%)", value: "≥ 170 MPa" },
-      { label: "Impact toughness", value: "≈ 130 J at -40 °C" },
-      { label: "Service temperature", value: "-196 °C to 800 °C" },
-      { label: "PREN", value: "≈ 24 – 26" },
-    ],
-  },
-  {
-    grade: "SS 410",
-    family: "Martensitic (hardenable 12% chromium)",
-    overallScore: 74,
-    scores: {
-      strength: 94,
-      corrosionResistance: 55,
-      impactToughness: 62,
-      temperatureSuitability: 70,
-      weldability: 52,
-      formability: 48,
-      cost: 92,
-    },
-    whyRecommended:
-      "The economical high-strength option: heat treatable to substantially higher tensile and hardness levels, suited to wear-facing machine parts in mild environments.",
-    tradeoffs: [
-      { type: "positive", text: "Highest strength and hardness of the three grades" },
-      { type: "positive", text: "Lowest material cost" },
-      { type: "caution", text: "Limited corrosion resistance — not for marine service" },
-      { type: "caution", text: "Requires pre-heat and post-weld treatment when welded" },
-    ],
-    applications: [
-      "Shafts, fasteners and pump components",
-      "Valve trim and wear parts",
-      "Cutlery and hand tools",
-      "Steam and gas turbine parts",
-    ],
-    properties: [
-      { label: "Typical UTS", value: "620 – 830 MPa (hardened)" },
-      { label: "Yield strength (0.2%)", value: "≥ 275 MPa" },
-      { label: "Impact toughness", value: "≈ 40 J at room temperature" },
-      { label: "Service temperature", value: "-30 °C to 650 °C" },
-      { label: "Magnetic response", value: "Magnetic" },
-    ],
-  },
-];
+  };
+}
 
 /**
- * Returns ranked grade recommendations for a set of user requirements.
- *
- * MOCK IMPLEMENTATION — replace the body with a backend call. The signature
- * and return shape are the contract the UI depends on.
+ * Returns ranked grade recommendations for a set of user requirements by
+ * calling the scoring engine over the stainless-steel database.
  */
 export async function getRecommendations(
   requirements: UserRequirements,
 ): Promise<RecommendationResult> {
-  await new Promise((resolve) => setTimeout(resolve, 1400));
-
   const consideredOptional: OptionalScoreKey[] = [
     ...(requirements.considerWeldability ? (["weldability"] as const) : []),
     ...(requirements.considerFormability ? (["formability"] as const) : []),
     ...(requirements.considerCost ? (["cost"] as const) : []),
   ];
 
+  const application = APPLICATION_PROFILE[requirements.application ?? "other"];
+
+  const response: RecommendResponse = await recommendGrades({
+    data: {
+      application,
+      uts: requirements.minimumUTS,
+      corrosion: requirements.corrosionResistance
+        ? CORROSION_TO_PREN[requirements.corrosionResistance]
+        : null,
+      // The "Brinell hardness" field in the form is stored on this key.
+      hardness: requirements.impactToughness,
+      min_temp: requirements.operatingTemperatureMin,
+      max_temp: requirements.operatingTemperatureMax,
+      weldability_required: requirements.considerWeldability,
+      formability_required: requirements.considerFormability,
+      cost_required: requirements.considerCost,
+    },
+  });
+
+  if ("error" in response) {
+    return {
+      recommendations: [],
+      consideredOptional,
+      error: "No grade in the database satisfies every requirement.",
+      failedOn: response.failed_on.map((k) => PARAM_LABELS[k] ?? k),
+    };
+  }
+
   return {
-    recommendations: [...MOCK_GRADES].sort((a, b) => b.overallScore - a.overallScore),
+    recommendations: [response.recommended_grade, ...response.alternatives].map(toGrade),
     consideredOptional,
+    confidence: response.confidence,
   };
 }
+

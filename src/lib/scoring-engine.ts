@@ -370,7 +370,11 @@ export function recommend(req: RecommendRequest): RecommendResponse {
     parameter_scores: s.parameter_scores,
   });
 
-  const separation = top.length > 1 ? top[0].score - top[1].score : 100;
+  const [first, second] = top;
+  if (!first) {
+    return { error: "no_match", closest_grades: [], failed_on: active };
+  }
+  const separation = second ? first.score - second.score : 100;
   const confidence: RecommendSuccess["confidence"] = baseline
     ? "Baseline"
     : active.length >= 3 && separation > 10
@@ -378,7 +382,7 @@ export function recommend(req: RecommendRequest): RecommendResponse {
       : "Standard";
 
   return {
-    recommended_grade: toResponse(top[0]),
+    recommended_grade: toResponse(first),
     alternatives: top.slice(1).map(toResponse),
     criteria_used: active,
     application: req.application,
