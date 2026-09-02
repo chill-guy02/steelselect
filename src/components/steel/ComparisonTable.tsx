@@ -65,10 +65,14 @@ export function ComparisonTable({
                 </th>
                 {recommendations.map((r) => (
                   <td key={r.grade} className="px-4 py-3 text-center tabular-nums">
-                    {row.considered ? (
-                      <span className="font-medium text-foreground">{r.scores[row.key]}</span>
-                    ) : (
+                    {!row.considered ? (
                       <span className="text-xs italic text-muted-foreground">Not considered</span>
+                    ) : r.scores[row.key] === null ? (
+                      <span className="text-xs italic text-muted-foreground">
+                        Data not available
+                      </span>
+                    ) : (
+                      <span className="font-medium text-foreground">{r.scores[row.key]}</span>
                     )}
                   </td>
                 ))}
