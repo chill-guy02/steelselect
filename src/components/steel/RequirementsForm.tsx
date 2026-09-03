@@ -111,7 +111,7 @@ export function RequirementsForm({ value, onChange, onSubmit, loading }: Props) 
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-[var(--shadow-card)]">
+    <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
       <Section index="01" title="Application" hint="Where will this material be used?">
         <div className="max-w-md">
           <Field label="Application" required>
@@ -217,15 +217,15 @@ export function RequirementsForm({ value, onChange, onSubmit, loading }: Props) 
                 aria-pressed={active}
                 onClick={() => set(item.key, !active)}
                 className={cn(
-                  "flex cursor-pointer items-start gap-3 rounded-lg border p-4 text-left transition-all",
+                  "flex cursor-pointer items-start gap-3 rounded-xl border p-4 text-left transition-all",
                   active
-                    ? "border-primary bg-primary-soft shadow-[var(--shadow-card)]"
-                    : "border-border bg-background hover:border-primary/40",
+                    ? "border-primary/60 bg-primary-soft shadow-[var(--shadow-card)]"
+                    : "border-border bg-card hover:border-primary/40 hover:bg-accent/40",
                 )}
               >
                 <span
                   className={cn(
-                    "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded border transition-colors",
+                    "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border transition-colors",
                     active ? "border-primary bg-primary" : "border-input bg-background",
                   )}
                 >
@@ -241,7 +241,7 @@ export function RequirementsForm({ value, onChange, onSubmit, loading }: Props) 
         </div>
       </Section>
 
-      <div className="border-t border-border bg-secondary/60 px-5 py-7 sm:px-8">
+      <div className="border-t border-border bg-secondary/50 px-5 py-7 sm:px-8">
         {error ? (
           <div
             role="alert"

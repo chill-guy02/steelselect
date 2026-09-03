@@ -54,7 +54,7 @@ export function ResultsView({
         </p>
       </header>
 
-      <section className="rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
+      <section className="rounded-2xl border border-border bg-gradient-hero p-6 shadow-[var(--shadow-card)]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex-1">
             <h2 className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-primary">
@@ -89,7 +89,7 @@ export function ResultsView({
       </section>
 
       {result.error ? (
-        <section className="rounded-xl border border-destructive/30 bg-destructive/5 p-6">
+        <section className="rounded-2xl border border-destructive/30 bg-destructive/5 p-6">
           <h2 className="font-display text-lg font-bold text-destructive">{result.error}</h2>
           {result.failedOn?.length ? (
             <p className="mt-2 text-sm text-muted-foreground">

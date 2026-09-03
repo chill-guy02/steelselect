@@ -23,11 +23,11 @@ export function ComparisonTable({
   ];
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-[var(--shadow-card)]">
+    <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
       <div className="overflow-x-auto">
         <table className="w-full min-w-[520px] border-collapse text-sm">
           <thead>
-            <tr className="border-b border-border bg-secondary/70">
+            <tr className="border-b border-border bg-secondary/70 [&>th]:whitespace-nowrap">
               <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Parameter
               </th>
@@ -42,7 +42,7 @@ export function ComparisonTable({
             </tr>
           </thead>
           <tbody>
-            <tr className="border-b border-border bg-primary-soft/60">
+            <tr className="border-b border-border bg-primary-soft">
               <th className="px-4 py-3 text-left text-sm font-semibold text-foreground">
                 Overall Score
               </th>
@@ -58,7 +58,10 @@ export function ComparisonTable({
             {rows.map((row) => (
               <tr
                 key={row.key}
-                className={cn("border-b border-border last:border-b-0", !row.considered && "opacity-50")}
+                className={cn(
+                  "border-b border-border transition-colors last:border-b-0 hover:bg-accent/40",
+                  !row.considered && "opacity-55",
+                )}
               >
                 <th className="px-4 py-3 text-left font-medium text-foreground">
                   {SCORE_LABELS[row.key]}

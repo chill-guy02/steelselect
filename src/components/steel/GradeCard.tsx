@@ -22,10 +22,10 @@ export function GradeCard({
   return (
     <article
       className={cn(
-        "relative flex flex-col rounded-xl border bg-card p-5 transition-shadow",
+        "relative flex flex-col rounded-2xl border bg-card p-6 transition-all hover:-translate-y-0.5",
         best
-          ? "border-primary shadow-[var(--shadow-elevated)]"
-          : "border-border shadow-[var(--shadow-card)]",
+          ? "border-primary/60 shadow-[var(--shadow-elevated)] ring-1 ring-primary/15"
+          : "border-border shadow-[var(--shadow-card)] hover:border-primary/30",
       )}
     >
       {best ? (
@@ -48,7 +48,7 @@ export function GradeCard({
         <ScoreDial score={rec.overallScore} />
       </div>
 
-      <div className="mt-5 space-y-3 border-t border-border pt-4">
+      <div className="mt-5 space-y-3.5 border-t border-border pt-5">
         {CORE_SCORE_KEYS.map((k) => (
           <ScoreBar key={k} label={SCORE_LABELS[k]} score={rec.scores[k]} />
         ))}
@@ -57,7 +57,7 @@ export function GradeCard({
         ))}
       </div>
 
-      <div className="mt-5 rounded-lg bg-primary-soft p-4">
+      <div className="mt-5 rounded-xl border border-primary/15 bg-primary-soft p-4">
         <h4 className="mb-1 text-[10px] font-bold uppercase tracking-[0.16em] text-primary">
           Why this grade?
         </h4>
