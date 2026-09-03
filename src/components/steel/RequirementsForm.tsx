@@ -253,7 +253,7 @@ export function RequirementsForm({ value, onChange, onSubmit, loading }: Props) 
         ) : null}
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-md text-xs text-muted-foreground">
-            Only Application is required. Add more requirements to improve recommendation accuracy.
+            {'\n'}
           </p>
           <Button
             variant="hero"
