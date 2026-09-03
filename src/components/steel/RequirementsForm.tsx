@@ -19,7 +19,7 @@ interface Props {
 }
 
 const fieldClass =
-  "h-11 w-full rounded-md border border-input bg-background px-3 text-sm text-foreground shadow-xs outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-ring/25";
+  "h-11 w-full rounded-lg border border-input bg-card px-3.5 text-sm text-foreground shadow-xs outline-none transition-all placeholder:text-muted-foreground/70 hover:border-primary/35 focus:border-primary focus:ring-4 focus:ring-primary/12";
 
 function Section({
   index,
@@ -33,14 +33,14 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-border px-5 py-7 first:border-t-0 sm:px-8">
-      <div className="mb-5 flex items-baseline gap-3">
-        <span className="font-display text-xs font-bold tracking-[0.2em] text-primary">
+    <section className="border-t border-border px-5 py-8 first:border-t-0 sm:px-8">
+      <div className="mb-6 flex items-start gap-4">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-soft font-display text-xs font-bold tracking-[0.06em] text-primary ring-1 ring-primary/20">
           {index}
         </span>
-        <div>
+        <div className="pt-0.5">
           <h2 className="text-base font-semibold text-foreground sm:text-lg">{title}</h2>
-          <p className="text-xs text-muted-foreground">{hint}</p>
+          <p className="mt-0.5 text-xs text-muted-foreground">{hint}</p>
         </div>
       </div>
       {children}
