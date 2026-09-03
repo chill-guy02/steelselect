@@ -94,8 +94,7 @@ function Index() {
                 {TITLE}
               </h1>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                Answer a few questions about your application requirements and we'll recommend the
-                most suitable stainless steel grades.
+                {'\n'}
               </p>
               <div className="mt-6 h-px w-32 hairline-rule" />
             </section>
