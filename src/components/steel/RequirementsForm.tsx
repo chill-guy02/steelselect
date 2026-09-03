@@ -19,7 +19,7 @@ interface Props {
 }
 
 const fieldClass =
-  "h-11 w-full rounded-md border border-input bg-background px-3 text-sm text-foreground shadow-xs outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-ring/25";
+  "h-11 w-full rounded-lg border border-input bg-card px-3.5 text-sm text-foreground shadow-xs outline-none transition-all placeholder:text-muted-foreground/70 hover:border-primary/35 focus:border-primary focus:ring-4 focus:ring-primary/12";
 
 function Section({
   index,
@@ -33,14 +33,14 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-border px-5 py-7 first:border-t-0 sm:px-8">
-      <div className="mb-5 flex items-baseline gap-3">
-        <span className="font-display text-xs font-bold tracking-[0.2em] text-primary">
+    <section className="border-t border-border px-5 py-8 first:border-t-0 sm:px-8">
+      <div className="mb-6 flex items-start gap-4">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-soft font-display text-xs font-bold tracking-[0.06em] text-primary ring-1 ring-primary/20">
           {index}
         </span>
-        <div>
+        <div className="pt-0.5">
           <h2 className="text-base font-semibold text-foreground sm:text-lg">{title}</h2>
-          <p className="text-xs text-muted-foreground">{hint}</p>
+          <p className="mt-0.5 text-xs text-muted-foreground">{hint}</p>
         </div>
       </div>
       {children}
@@ -111,7 +111,7 @@ export function RequirementsForm({ value, onChange, onSubmit, loading }: Props) 
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-[var(--shadow-card)]">
+    <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
       <Section index="01" title="Application" hint="Where will this material be used?">
         <div className="max-w-md">
           <Field label="Application" required>
@@ -217,15 +217,15 @@ export function RequirementsForm({ value, onChange, onSubmit, loading }: Props) 
                 aria-pressed={active}
                 onClick={() => set(item.key, !active)}
                 className={cn(
-                  "flex cursor-pointer items-start gap-3 rounded-lg border p-4 text-left transition-all",
+                  "flex cursor-pointer items-start gap-3 rounded-xl border p-4 text-left transition-all",
                   active
-                    ? "border-primary bg-primary-soft shadow-[var(--shadow-card)]"
-                    : "border-border bg-background hover:border-primary/40",
+                    ? "border-primary/60 bg-primary-soft shadow-[var(--shadow-card)]"
+                    : "border-border bg-card hover:border-primary/40 hover:bg-accent/40",
                 )}
               >
                 <span
                   className={cn(
-                    "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded border transition-colors",
+                    "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border transition-colors",
                     active ? "border-primary bg-primary" : "border-input bg-background",
                   )}
                 >
@@ -241,7 +241,7 @@ export function RequirementsForm({ value, onChange, onSubmit, loading }: Props) 
         </div>
       </Section>
 
-      <div className="border-t border-border bg-secondary/60 px-5 py-7 sm:px-8">
+      <div className="border-t border-border bg-secondary/50 px-5 py-7 sm:px-8">
         {error ? (
           <div
             role="alert"

@@ -23,12 +23,12 @@ export function ScoreBar({
           {unavailable ? "Data not available" : score}
         </span>
       </div>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-secondary">
         {unavailable ? null : (
           <div
             className={cn(
               "h-full rounded-full transition-[width] duration-700",
-              score >= 70 ? "bg-gradient-primary" : "bg-muted-foreground/50",
+              score >= 70 ? "bg-gradient-primary" : "bg-primary/35",
             )}
             style={{ width: `${Math.max(0, Math.min(100, score))}%` }}
           />
