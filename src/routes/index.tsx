@@ -48,9 +48,11 @@ function Index() {
       <header className="sticky top-0 z-30 border-b border-border/80 bg-card/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
           <div className="flex items-center gap-3">
-            <span className="flex size-9 items-center justify-center rounded-lg bg-gradient-primary font-display text-sm font-bold text-primary-foreground shadow-[var(--shadow-elevated)]">
-              SS
-            </span>
+            <img
+              src={jslLogo.url}
+              alt="Jindal Stainless"
+              className="h-9 w-auto object-contain"
+            />
             <span className="leading-tight">
               <span className="block font-display text-sm font-bold uppercase tracking-[0.14em] text-foreground">
                 Grade Selector
