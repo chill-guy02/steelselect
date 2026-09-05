@@ -45,6 +45,8 @@ export interface RawGrade {
   formability: number;
   cost: number;
   treatment: string;
+  /** Database application columns (Construction, Shipbuilding, …) marked "Yes" for this grade. */
+  applications: string[];
 }
 
 export interface PreparedGrade extends RawGrade {
@@ -58,6 +60,12 @@ export interface PreparedGrade extends RawGrade {
 
 export interface RecommendRequest {
   application: string;
+  /**
+   * Database application column (e.g. "Shipbuilding", "Others"). When set,
+   * only grades whose column is marked "Yes" enter the recommendation
+   * pipeline. Matching is case/whitespace-insensitive.
+   */
+  app_column?: string | null;
   uts?: number | null;
   corrosion?: PrenIndex | null;
   hardness?: number | null;
