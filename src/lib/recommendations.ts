@@ -118,6 +118,16 @@ const APPLICATION_PROFILE: Record<Application, string> = {
   other: "Construction",
 };
 
+/** UI application values -> database application columns used as a pre-filter. */
+const APPLICATION_COLUMN: Record<Application, string> = {
+  construction: "Construction",
+  shipbuilding: "Shipbuilding",
+  automobiles: "Automobiles",
+  railways: "Railways",
+  "consumer-products": "Consumer_Products",
+  other: "Others",
+};
+
 const CORROSION_TO_PREN: Record<CorrosionResistance, PrenIndex> = {
   low: "Low",
   medium: "Medium",
@@ -189,6 +199,7 @@ export async function getRecommendations(
   const response: RecommendResponse = await recommendGrades({
     data: {
       application,
+      app_column: APPLICATION_COLUMN[requirements.application ?? "other"],
       uts: requirements.minimumUTS,
       corrosion: requirements.corrosionResistance
         ? CORROSION_TO_PREN[requirements.corrosionResistance]
