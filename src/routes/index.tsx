@@ -5,6 +5,7 @@ import { Loader2 } from "lucide-react";
 import jslLogo from "@/assets/jsl-logo.png.asset.json";
 import { RequirementsForm } from "@/components/steel/RequirementsForm";
 import { ResultsView } from "@/components/steel/ResultsView";
+import { SelectionSidebar } from "@/components/steel/SelectionSidebar";
 import {
   emptyRequirements,
   getRecommendations,
