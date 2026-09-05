@@ -10,8 +10,10 @@ function parse(data: unknown): RecommendRequest {
   const num = (v: unknown) =>
     v === null || v === undefined || v === "" || Number.isNaN(Number(v)) ? null : Number(v);
   const corrosion = d["corrosion"];
+  const appColumn = d["app_column"];
   return {
     application: d["application"],
+    app_column: typeof appColumn === "string" && appColumn.trim() !== "" ? appColumn : null,
     uts: num(d["uts"]),
     corrosion:
       corrosion === "Low" || corrosion === "Medium" || corrosion === "High" ? corrosion : null,

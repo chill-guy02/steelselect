@@ -18,9 +18,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 815.0,
   "weldability": 82.49,
-  "formability": 60.24,
+  "formability": 61.99,
   "cost": 66.6,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Railways",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 444",
@@ -41,9 +46,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 815.0,
   "weldability": 87.65,
-  "formability": 56.05,
+  "formability": 57.63,
   "cost": 31.5,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4520",
@@ -64,9 +75,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 87.65,
-  "formability": 61.82,
+  "formability": 63.03,
   "cost": 49.7,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "ASTM TP 443",
@@ -87,9 +105,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 75.0,
-  "formability": 54.93,
+  "formability": 57.6,
   "cost": 36.6,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "UNS S40977",
@@ -110,9 +135,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 815.0,
   "weldability": 87.18,
-  "formability": 54.86,
+  "formability": 57.14,
   "cost": 65.6,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Railways",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 205",
@@ -133,9 +163,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.0,
-  "formability": 76.25,
+  "formability": 73.94,
   "cost": 45.3,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 304Cu",
@@ -156,9 +192,17 @@
   "minServiceTemp": -196.0,
   "maxServiceTemp": 870.0,
   "weldability": 97.18,
-  "formability": 81.99,
+  "formability": 80.26,
   "cost": 29.2,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 316 (Cold_finished)",
@@ -179,9 +223,16 @@
   "minServiceTemp": -196.0,
   "maxServiceTemp": 870.0,
   "weldability": 92.49,
-  "formability": 68.81,
+  "formability": 68.5,
   "cost": 25.2,
-  "treatment": "Cold_Finished"
+  "treatment": "Cold_Finished",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 317 (Cold_Finished)",
@@ -202,9 +253,14 @@
   "minServiceTemp": -196.0,
   "maxServiceTemp": 870.0,
   "weldability": 92.49,
-  "formability": 68.4,
+  "formability": 69.02,
   "cost": 12.7,
-  "treatment": "Cold_Finished"
+  "treatment": "Cold_Finished",
+  "applications": [
+   "Shipbuilding",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 317 (Hot_Finished)",
@@ -225,9 +281,14 @@
   "minServiceTemp": -196.0,
   "maxServiceTemp": 870.0,
   "weldability": 92.49,
-  "formability": 84.78,
+  "formability": 81.39,
   "cost": 12.7,
-  "treatment": "Hot_Finished"
+  "treatment": "Hot_Finished",
+  "applications": [
+   "Shipbuilding",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4303 (X4CrNi18-12)",
@@ -248,13 +309,21 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 815.0,
   "weldability": 94.37,
-  "formability": 85.04,
+  "formability": 82.15,
   "cost": 36.7,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
-  "grade": "EN 1.4310 (X10CrNi18-8) ",
-  "name": "EN 1.4310 (X10CrNi18-8) ",
+  "grade": "EN 1.4310 (X10CrNi18-8)",
+  "name": "EN 1.4310 (X10CrNi18-8)",
   "type": "Austenitic",
   "standard": "EN",
   "description": "",
@@ -271,9 +340,16 @@
   "minServiceTemp": -196.0,
   "maxServiceTemp": 1100.0,
   "weldability": 85.0,
-  "formability": 82.18,
+  "formability": 80.67,
   "cost": 39.3,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4335 (X1CrNi25-21)",
@@ -294,9 +370,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 98.12,
-  "formability": 81.56,
+  "formability": 79.8,
   "cost": 8.2,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4372 (X12CrMnNiN17-7-5)",
@@ -317,9 +398,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.93,
-  "formability": 80.77,
+  "formability": 78.23,
   "cost": 45.3,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4567 (X3CrNiCu18-9-4)",
@@ -340,9 +427,12 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 96.24,
-  "formability": 86.84,
+  "formability": 83.8,
   "cost": 28.7,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4570 (X6CrNiCuS18-9-2)",
@@ -363,9 +453,12 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 92.49,
-  "formability": 79.19,
+  "formability": 79.26,
   "cost": 33.0,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4833 (X12CrNi23-13)",
@@ -386,9 +479,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.93,
-  "formability": 75.89,
+  "formability": 76.25,
   "cost": 21.3,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4841 (X15CrNiSi25-21)",
@@ -409,9 +507,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.0,
-  "formability": 70.81,
+  "formability": 72.97,
   "cost": 8.1,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "UNS S21800 (Alloy 218)",
@@ -432,9 +535,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 90.62,
-  "formability": 73.47,
+  "formability": 72.75,
   "cost": 39.6,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 403 (Hardened)",
@@ -455,9 +563,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.93,
-  "formability": 41.06,
+  "formability": 41.13,
   "cost": 63.9,
-  "treatment": "Hardened"
+  "treatment": "Hardened",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 416 (Annealed)",
@@ -478,9 +590,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.93,
-  "formability": 58.25,
+  "formability": 54.12,
   "cost": 61.8,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 420 (Hardened)",
@@ -501,9 +619,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 24.03,
+  "formability": 26.45,
   "cost": 60.1,
-  "treatment": "Hardened"
+  "treatment": "Hardened",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 431 (Hardened)",
@@ -524,9 +647,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 33.49,
+  "formability": 33.83,
   "cost": 51.5,
-  "treatment": "Hardened"
+  "treatment": "Hardened",
+  "applications": [
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 431 (Temper)",
@@ -547,9 +676,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 39.52,
+  "formability": 39.2,
   "cost": 51.5,
-  "treatment": "Temper"
+  "treatment": "Temper",
+  "applications": [
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 440A (Hardened)",
@@ -570,9 +705,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 16.11,
+  "formability": 19.25,
   "cost": 48.0,
-  "treatment": "Hardened"
+  "treatment": "Hardened",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 440B (Annealed)",
@@ -593,9 +733,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 45.75,
+  "formability": 45.49,
   "cost": 48.0,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 440B (Hardened)",
@@ -616,9 +761,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 11.39,
+  "formability": 15.09,
   "cost": 48.0,
-  "treatment": "Hardened"
+  "treatment": "Hardened",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 440C (Annealed)",
@@ -639,9 +789,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 41.82,
+  "formability": 42.65,
   "cost": 48.0,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "AISI 440C (Hardened)",
@@ -662,9 +817,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 10.02,
+  "formability": 14.03,
   "cost": 48.0,
-  "treatment": "Hardened"
+  "treatment": "Hardened",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "ASTM A182 Grade F6b",
@@ -685,9 +845,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.93,
-  "formability": 40.14,
+  "formability": 39.47,
   "cost": 58.4,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4006 (Q & T)",
@@ -708,9 +873,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 43.8,
+  "formability": 43.62,
   "cost": 63.0,
-  "treatment": "Quenched & Temper"
+  "treatment": "Quenched & Temper",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4021",
@@ -731,9 +900,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 45.18,
+  "formability": 45.14,
   "cost": 61.8,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4029",
@@ -754,9 +927,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 47.59,
+  "formability": 46.73,
   "cost": 60.8,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4057",
@@ -777,9 +954,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 43.11,
+  "formability": 43.05,
   "cost": 51.4,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "EN 1.4125",
@@ -800,9 +983,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 45.93,
+  "formability": 45.36,
   "cost": 46.7,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "ASTM A493 Grade 431",
@@ -823,9 +1011,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 42.9,
+  "formability": 41.72,
   "cost": 51.5,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "UNS S41003 (3CR12)",
@@ -846,9 +1040,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 67.18,
-  "formability": 49.71,
+  "formability": 48.52,
   "cost": 65.5,
-  "treatment": "Annealed"
+  "treatment": "Annealed",
+  "applications": [
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr13Mo",
@@ -869,9 +1069,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 84.6,
+  "formability": 81.0,
   "cost": 59.8,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 2Cr13",
@@ -892,9 +1096,12 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 72.39,
+  "formability": 66.68,
   "cost": 61.6,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 3Cr13",
@@ -915,9 +1122,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 65.08,
+  "formability": 57.15,
   "cost": 61.6,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T Y3Cr13",
@@ -938,9 +1150,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 69.24,
+  "formability": 61.49,
   "cost": 59.8,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr17Ni2",
@@ -961,9 +1178,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 39.22,
+  "formability": 36.33,
   "cost": 48.6,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 0Cr13Al",
@@ -984,9 +1208,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 82.49,
-  "formability": 64.39,
+  "formability": 59.75,
   "cost": 61.5,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 00Cr12",
@@ -1007,9 +1235,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 87.18,
-  "formability": 43.46,
+  "formability": 48.32,
   "cost": 64.5,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr17",
@@ -1030,9 +1262,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 78.74,
-  "formability": 58.12,
+  "formability": 60.53,
   "cost": 50.0,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T Y1Cr17",
@@ -1053,9 +1292,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 78.74,
-  "formability": 62.45,
+  "formability": 57.84,
   "cost": 48.2,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr17Mo",
@@ -1076,9 +1322,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 78.74,
-  "formability": 54.73,
+  "formability": 56.6,
   "cost": 44.1,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 00Cr30Mo2",
@@ -1099,9 +1352,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 89.05,
-  "formability": 66.23,
+  "formability": 65.78,
   "cost": 0.0,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 00Cr27Mo",
@@ -1122,9 +1379,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 89.05,
-  "formability": 40.25,
+  "formability": 44.88,
   "cost": 16.7,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 00Cr17",
@@ -1145,9 +1406,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 87.18,
-  "formability": 63.16,
+  "formability": 58.02,
   "cost": 47.8,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr15",
@@ -1168,9 +1436,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 78.74,
-  "formability": 61.8,
+  "formability": 60.44,
   "cost": 55.8,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr12",
@@ -1191,9 +1466,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.93,
-  "formability": 39.68,
+  "formability": 40.02,
   "cost": 63.9,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr13",
@@ -1214,9 +1493,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.93,
-  "formability": 30.49,
+  "formability": 31.39,
   "cost": 63.1,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 0Cr13",
@@ -1237,9 +1520,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 62.49,
-  "formability": 47.81,
+  "formability": 50.59,
   "cost": 63.1,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T Y1Cr13",
@@ -1260,9 +1547,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.93,
-  "formability": 42.6,
+  "formability": 39.82,
   "cost": 59.8,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "ASTM 431",
@@ -1283,9 +1574,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 59.51,
+  "formability": 50.52,
   "cost": 51.5,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "ASTM 440A",
@@ -1306,9 +1603,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 59.6,
+  "formability": 51.89,
   "cost": 48.0,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "ASTM 440B",
@@ -1329,9 +1631,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 650.0,
   "weldability": 55.0,
-  "formability": 49.89,
+  "formability": 45.35,
   "cost": 48.0,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "ASTM 501",
@@ -1352,9 +1659,13 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 55.0,
-  "formability": 37.93,
+  "formability": 35.62,
   "cost": 82.1,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr17Mn6Ni5N",
@@ -1375,9 +1686,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.93,
-  "formability": 43.08,
+  "formability": 50.06,
   "cost": 45.4,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr18Mn8Ni5N",
@@ -1398,9 +1716,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.93,
-  "formability": 56.19,
+  "formability": 64.68,
   "cost": 41.7,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr18Mn10Ni5Mo3N",
@@ -1421,9 +1745,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 90.62,
-  "formability": 74.62,
+  "formability": 72.25,
   "cost": 23.1,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 2Cr13Mn9Ni4",
@@ -1444,9 +1775,15 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.0,
-  "formability": 64.08,
+  "formability": 60.93,
   "cost": 56.9,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr17Ni7",
@@ -1467,9 +1804,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.93,
-  "formability": 56.02,
+  "formability": 56.48,
   "cost": 44.0,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr18Ni9",
@@ -1490,9 +1834,17 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.0,
-  "formability": 54.93,
+  "formability": 56.0,
   "cost": 40.0,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T Y1Cr18Ni9",
@@ -1513,9 +1865,17 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 85.93,
-  "formability": 57.81,
+  "formability": 58.41,
   "cost": 39.4,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 0Cr18Ni9",
@@ -1536,9 +1896,17 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 93.43,
-  "formability": 38.61,
+  "formability": 44.78,
   "cost": 39.0,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 0Cr19Ni9N",
@@ -1559,9 +1927,17 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 92.49,
-  "formability": 61.94,
+  "formability": 62.35,
   "cost": 36.6,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 0Cr19Ni10NbN",
@@ -1582,9 +1958,17 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 92.49,
-  "formability": 48.04,
+  "formability": 55.94,
   "cost": 36.2,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr18Ni12",
@@ -1605,9 +1989,17 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 88.74,
-  "formability": 53.88,
+  "formability": 57.8,
   "cost": 37.0,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 0Cr25Ni20",
@@ -1628,9 +2020,14 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 92.49,
-  "formability": 63.57,
+  "formability": 64.88,
   "cost": 9.0,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Automobiles",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 0Cr17Ni12Mo2",
@@ -1651,9 +2048,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 92.49,
-  "formability": 49.32,
+  "formability": 52.67,
   "cost": 25.1,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 00Cr17Ni14Mo2",
@@ -1674,9 +2078,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 97.18,
-  "formability": 48.57,
+  "formability": 54.5,
   "cost": 22.4,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  },
  {
   "grade": "GB/T 1Cr18Ni11Ti",
@@ -1697,8 +2108,16 @@
   "minServiceTemp": -20.0,
   "maxServiceTemp": 500.0,
   "weldability": 86.88,
-  "formability": 79.41,
+  "formability": 77.64,
   "cost": 35.8,
-  "treatment": "Annealed, Q&T"
+  "treatment": "Annealed, Q&T",
+  "applications": [
+   "Shipbuilding",
+   "Consumer_Products",
+   "Automobiles",
+   "Railways",
+   "Construction",
+   "Others"
+  ]
  }
 ]

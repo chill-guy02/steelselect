@@ -45,6 +45,8 @@ export interface RawGrade {
   formability: number;
   cost: number;
   treatment: string;
+  /** Database application columns (Construction, Shipbuilding, …) marked "Yes" for this grade. */
+  applications: string[];
 }
 
 export interface PreparedGrade extends RawGrade {
@@ -58,6 +60,12 @@ export interface PreparedGrade extends RawGrade {
 
 export interface RecommendRequest {
   application: string;
+  /**
+   * Database application column (e.g. "Shipbuilding", "Others"). When set,
+   * only grades whose column is marked "Yes" enter the recommendation
+   * pipeline. Matching is case/whitespace-insensitive.
+   */
+  app_column?: string | null;
   uts?: number | null;
   corrosion?: PrenIndex | null;
   hardness?: number | null;
@@ -253,10 +261,21 @@ export function recommend(req: RecommendRequest): RecommendResponse {
 
   const baseline = active.length === 0;
 
+  // 2b. Application pre-filter: only grades whose application column in the
+  // database is marked "Yes" (case/whitespace-insensitive) are considered.
+  const appColumn = req.app_column?.trim().toLowerCase();
+  const pool = appColumn
+    ? GRADES.filter((g) => g.applications.some((a) => a.trim().toLowerCase() === appColumn))
+    : GRADES;
+
+  if (pool.length === 0) {
+    return { error: "no_match", closest_grades: [], failed_on: active };
+  }
+
   // 3. Hard filter (skipped entirely for the baseline path).
-  let survivors = GRADES;
+  let survivors = pool;
   if (!baseline) {
-    const failures = GRADES.map((g) => ({ g, failed: filterChecks(g, req) }));
+    const failures = pool.map((g) => ({ g, failed: filterChecks(g, req) }));
     survivors = failures.filter((f) => f.failed.length === 0).map((f) => f.g);
 
     // 4. No survivors -> explain which filter did the most damage.
