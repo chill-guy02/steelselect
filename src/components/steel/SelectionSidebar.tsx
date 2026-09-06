@@ -1,4 +1,9 @@
+import { useState } from "react";
 import { Lightbulb, Star, ChevronRight } from "lucide-react";
+
+import { GRADES, type PreparedGrade } from "@/lib/scoring-engine";
+import type { GradeRecommendation } from "@/lib/recommendations";
+import { GradeDetailsDialog } from "./GradeDetailsDialog";
 
 const TIPS = [
   {
@@ -20,14 +25,60 @@ const TIPS = [
 ];
 
 const POPULAR = [
-  { grade: "304", desc: "General purpose" },
-  { grade: "316L", desc: "High corrosion resistance" },
-  { grade: "430", desc: "Ferritic" },
-  { grade: "2205", desc: "Duplex / high strength" },
-  { grade: "410", desc: "Martensitic / wear resistant" },
+  { grade: "304", desc: "General purpose", match: "GB/T 0Cr18Ni9" },
+  { grade: "316L", desc: "High corrosion resistance", match: "GB/T 00Cr17Ni14Mo2" },
+  { grade: "430", desc: "Ferritic", match: "GB/T 1Cr17" },
+  { grade: "2205", desc: "Duplex / high strength", match: "AISI 317 (Cold_Finished)" },
+  { grade: "410", desc: "Martensitic / wear resistant", match: "GB/T 1Cr13" },
 ];
 
+function toGradeRecommendation(g: PreparedGrade): GradeRecommendation {
+  return {
+    grade: g.baseGrade,
+    family: [g.type, g.name].filter(Boolean).join(" — "),
+    overallScore: 0,
+    scores: {
+      strength: null,
+      corrosionResistance: null,
+      impactToughness: null,
+      temperatureSuitability: null,
+      weldability: null,
+      formability: null,
+      cost: null,
+    },
+    whyRecommended:
+      "Popular grade overview — run a full recommendation to see how it scores for your exact requirements.",
+    tradeoffs: [],
+    applications: g.applications,
+    properties: [
+      { label: "Ultimate tensile strength", value: `${g.uts} MPa` },
+      { label: "Yield strength", value: `${g.ys} MPa` },
+      { label: "Brinell hardness", value: `${g.hardness} HB` },
+      {
+        label: "PREN",
+        value: `${Math.round(g.pren * 10) / 10} (${g.prenIndex})`,
+      },
+      {
+        label: "Service temperature",
+        value: `${g.minServiceTemp} °C to ${g.maxServiceTemp} °C`,
+      },
+      { label: "Weldability score", value: `${g.weldability} / 100` },
+      { label: "Formability score", value: `${g.formability} / 100` },
+      { label: "Cost score", value: `${g.cost} / 100` },
+      { label: "Standard", value: g.standard || "—" },
+      { label: "Condition / treatment", value: g.treatment || "—" },
+    ],
+  };
+}
+
 export function SelectionSidebar() {
+  const [detail, setDetail] = useState<GradeRecommendation | null>(null);
+
+  const openPopularGrade = (match: string) => {
+    const g = GRADES.find((grade) => grade.grade === match);
+    if (g) setDetail(toGradeRecommendation(g));
+  };
+
   return (
     <aside className="space-y-6">
       <div className="rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
@@ -66,6 +117,7 @@ export function SelectionSidebar() {
             <li key={g.grade}>
               <button
                 type="button"
+                onClick={() => openPopularGrade(g.match)}
                 className="group flex w-full items-center justify-between rounded-lg px-2 py-2.5 text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               >
                 <span>
@@ -78,6 +130,12 @@ export function SelectionSidebar() {
           ))}
         </ul>
       </div>
+
+      <GradeDetailsDialog
+        grade={detail}
+        open={detail !== null}
+        onOpenChange={(v) => !v && setDetail(null)}
+      />
     </aside>
   );
 }
