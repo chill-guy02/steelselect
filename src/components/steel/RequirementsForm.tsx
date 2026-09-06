@@ -70,7 +70,7 @@ function Field({
           </span>
         ) : (
           <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-            Optional
+            (HBW) OPTIONAL
           </span>
         )}
       </span>
