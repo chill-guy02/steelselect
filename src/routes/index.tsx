@@ -89,26 +89,29 @@ function Index() {
             onEdit={() => setResult(null)}
           />
         ) : (
-          <>
-            <section className="mb-10 overflow-hidden rounded-2xl border border-border bg-gradient-hero px-6 py-9 shadow-[var(--shadow-card)] sm:px-10 sm:py-12">
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-card/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
-                Material Selection
-              </span>
-              <h1 className="mt-4 max-w-2xl font-display text-3xl font-bold leading-[1.1] text-foreground sm:text-[2.6rem]">
-                {TITLE}
-              </h1>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {'\n'}
-              </p>
-              <div className="mt-6 h-px w-32 hairline-rule" />
-            </section>
-            <RequirementsForm
-              value={requirements}
-              onChange={setRequirements}
-              onSubmit={handleSubmit}
-              loading={loading}
-            />
-          </>
+          <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+            <div>
+              <section className="mb-10 overflow-hidden rounded-2xl border border-border bg-gradient-hero px-6 py-9 shadow-[var(--shadow-card)] sm:px-10 sm:py-12">
+                <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-card/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+                  Material Selection
+                </span>
+                <h1 className="mt-4 max-w-2xl font-display text-3xl font-bold leading-[1.1] text-foreground sm:text-[2.6rem]">
+                  {TITLE}
+                </h1>
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {'\n'}
+                </p>
+                <div className="mt-6 h-px w-32 hairline-rule" />
+              </section>
+              <RequirementsForm
+                value={requirements}
+                onChange={setRequirements}
+                onSubmit={handleSubmit}
+                loading={loading}
+              />
+            </div>
+            <SelectionSidebar />
+          </div>
         )}
       </main>
 
