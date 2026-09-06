@@ -67,6 +67,15 @@ function Index() {
             Engineering Tool
           </span>
         </div>
+        <div className="mx-auto max-w-6xl border-t border-border/60 px-5 py-2 sm:px-8">
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-medium tracking-wide text-muted-foreground">
+            <span>75+ grades</span>
+            <span className="hidden h-1 w-1 rounded-full bg-primary/60 sm:inline" />
+            <span className="hidden sm:inline">Multi-parameter scoring</span>
+            <span className="hidden h-1 w-1 rounded-full bg-primary/60 sm:inline" />
+            <span className="hidden sm:inline">Engineering-based recommendations</span>
+          </p>
+        </div>
       </header>
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-5 py-10 sm:px-8 sm:py-14">
