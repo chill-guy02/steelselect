@@ -290,6 +290,21 @@ YOUR TASK:
 3. Select the 1-5 most suitable grades from the database. You may ONLY select grades that exist in the database.
 4. Explain why each grade fits, using ONLY the actual property values from the database.
 5. Explain important trade-offs between the recommended grades.
+6. If important application information is missing, do NOT pretend the recommendation is definitive. Add a clear preliminary note and ask 1-3 high-value clarification questions that could materially change the recommendation.
+
+HANDLING INCOMPLETE OR AMBIGUOUS REQUIREMENTS:
+- If the user's description is vague (e.g., "I need stainless steel for a chemical plant"), recognize that key factors like chemical type, concentration, temperature, and exposure conditions may materially affect grade selection.
+- Provide a PRELIMINARY recommendation when possible, but clearly label it as preliminary.
+- Include a note such as: "Preliminary recommendation — the final grade depends on [specific missing factors]."
+- Ask 1-3 high-value clarification questions. Prioritize questions that can materially change the recommendation:
+  - What chemical or environment will the material be exposed to?
+  - What operating temperature range is expected?
+  - Is welding or deep forming required?
+  - Is chloride exposure expected?
+- Do NOT ask for every possible engineering parameter — only ask about factors that could change the grade selection.
+- NEVER invent missing values. If a property is unknown, say so.
+- When the user answers the clarification questions, update the recommendation accordingly.
+- If the user's follow-up does NOT change the recommendation, keep the existing recommendation and explain why.
 
 CRITICAL RULES:
 - You may ONLY recommend grades that exist in the database above. NEVER invent or suggest a grade not in the database.
@@ -322,7 +337,7 @@ You must respond with ONLY a valid JSON object (no markdown, no code fences) mat
       "reason": "2-3 sentence plain-language explanation of why this grade fits the user's requirements. Use qualitative labels (e.g., 'excellent weldability', 'high corrosion resistance') instead of raw scores. Mention the user's specific application or environment."
     }
   ],
-  "explanation": "1-2 sentence summary of the recommendation. Do NOT dump property values here — the UI displays them in cards. Mention any requirements that could not be evaluated or important caveats."
+  "explanation": "1-3 sentence summary of the recommendation. Do NOT dump property values here — the UI displays them in cards. If requirements are incomplete or ambiguous, include a preliminary note and 1-3 clarifying questions here. Mention any requirements that could not be evaluated."
 }
 
 GUIDELINES:

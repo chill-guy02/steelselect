@@ -158,16 +158,26 @@ export function AIMode({
         selectedGrades?: AIValidatedGrade[];
       };
 
+      let chatText = data.message || "I received an empty response. Please try rephrasing your question.";
+
+      if (data.success && data.isRecommendation && data.selectedGrades && data.selectedGrades.length > 0) {
+        const names = data.selectedGrades.map((g) => {
+          const match = g.grade.match(/^(.+?)\s*\(([^)]+)\)$/);
+          if (match && /^(hot|cold|annealed|tempered|quenched)/i.test(match[2])) {
+            return match[1].trim();
+          }
+          return g.grade;
+        });
+        chatText = `${chatText}\n\nRecommended grades: ${names.join(", ")}`;
+        setCurrentGrades(data.selectedGrades);
+      }
+
       const aiMsg: ChatMessage = {
         id: crypto.randomUUID(),
         role: "assistant",
-        content: data.message || "I received an empty response. Please try rephrasing your question.",
+        content: chatText,
       };
       onMessagesChange([...updatedMessages, aiMsg]);
-
-      if (data.success && data.isRecommendation && data.selectedGrades && data.selectedGrades.length > 0) {
-        setCurrentGrades(data.selectedGrades);
-      }
     } catch (err) {
       const errMsg =
         err instanceof Error
