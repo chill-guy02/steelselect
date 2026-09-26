@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiAiRecommendRouteImport } from './routes/api/ai-recommend'
 import { Route as ApiPublicRecommendRouteImport } from './routes/api/public/recommend'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAiRecommendRoute = ApiAiRecommendRouteImport.update({
+  id: '/api/ai-recommend',
+  path: '/api/ai-recommend',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicRecommendRoute = ApiPublicRecommendRouteImport.update({
@@ -25,27 +31,31 @@ const ApiPublicRecommendRoute = ApiPublicRecommendRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/ai-recommend': typeof ApiAiRecommendRoute
   '/api/public/recommend': typeof ApiPublicRecommendRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/ai-recommend': typeof ApiAiRecommendRoute
   '/api/public/recommend': typeof ApiPublicRecommendRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/ai-recommend': typeof ApiAiRecommendRoute
   '/api/public/recommend': typeof ApiPublicRecommendRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/recommend'
+  fullPaths: '/' | '/api/ai-recommend' | '/api/public/recommend'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/recommend'
-  id: '__root__' | '/' | '/api/public/recommend'
+  to: '/' | '/api/ai-recommend' | '/api/public/recommend'
+  id: '__root__' | '/' | '/api/ai-recommend' | '/api/public/recommend'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiAiRecommendRoute: typeof ApiAiRecommendRoute
   ApiPublicRecommendRoute: typeof ApiPublicRecommendRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/ai-recommend': {
+      id: '/api/ai-recommend'
+      path: '/api/ai-recommend'
+      fullPath: '/api/ai-recommend'
+      preLoaderRoute: typeof ApiAiRecommendRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/recommend': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiAiRecommendRoute: ApiAiRecommendRoute,
   ApiPublicRecommendRoute: ApiPublicRecommendRoute,
 }
 export const routeTree = rootRouteImport
