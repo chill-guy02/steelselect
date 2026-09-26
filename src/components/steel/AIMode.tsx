@@ -3,6 +3,10 @@ import { Send, Sparkles, User, Bot } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  AIRecommendationCard,
+  type AIValidatedGrade,
+} from "./AIRecommendationCard";
 
 export type AIApplication =
   | "construction"
@@ -45,6 +49,8 @@ export interface ChatMessage {
   id: string;
   role: "user" | "assistant";
   content: string;
+  isRecommendation?: boolean;
+  selectedGrades?: AIValidatedGrade[];
 }
 
 const APPLICATION_OPTIONS: { value: AIApplication; label: string }[] = [
@@ -149,12 +155,16 @@ export function AIMode({
         message: string;
         error?: string;
         geminiConfigured: boolean;
+        isRecommendation?: boolean;
+        selectedGrades?: AIValidatedGrade[];
       };
 
       const aiMsg: ChatMessage = {
         id: crypto.randomUUID(),
         role: "assistant",
         content: data.message || "I received an empty response. Please try rephrasing your question.",
+        isRecommendation: data.isRecommendation,
+        selectedGrades: data.selectedGrades,
       };
       onMessagesChange([...updatedMessages, aiMsg]);
     } catch (err) {
@@ -318,13 +328,26 @@ export function AIMode({
                   </span>
                   <div
                     className={cn(
-                      "max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
+                      "max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
                       m.role === "user"
                         ? "rounded-tr-sm bg-primary text-primary-foreground"
                         : "rounded-tl-sm border border-border bg-secondary/40 text-foreground",
                     )}
                   >
-                    {m.content}
+                    {m.isRecommendation && m.selectedGrades && m.selectedGrades.length > 0 ? (
+                      <div className="space-y-2">
+                        {m.content ? (
+                          <p className="mb-1 text-sm leading-relaxed text-foreground">{m.content}</p>
+                        ) : null}
+                        <div className="grid gap-3 sm:grid-cols-1">
+                          {m.selectedGrades.map((g, i) => (
+                            <AIRecommendationCard key={`${g.grade}-${i}`} grade={g} rank={i} />
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      m.content
+                    )}
                   </div>
                 </div>
               ))}

@@ -302,6 +302,14 @@ CRITICAL RULES:
 - Cost score: higher = more affordable. Lower = more expensive.
 - Weldability/Formability scores: higher = better.
 
+OUTPUT QUALITY RULES (VERY IMPORTANT):
+- The "reason" field for each selected grade must be a SHORT, human-friendly paragraph (2-3 sentences) explaining WHY the grade fits the user's requirements in plain language.
+- NEVER expose raw internal scores like "Cost score: 12.7" or "Weldability score: 92.49" in the reason text. Instead, translate scores into qualitative labels: "excellent weldability", "moderate cost", "high corrosion resistance", etc.
+- NEVER list property values as a data dump (e.g., "UTS: 710, YS: 420, PREN: 31.4"). Instead, weave relevant values into natural sentences.
+- Do NOT include manufacturing-condition terminology (e.g., "Hot_Finished", "Cold_Finished") in the grade name you provide in the "grade" field — use the exact database grade name as-is, but in the "reason" field refer to the grade by its base name only (e.g., "AISI 317" not "AISI 317 (Hot_Finished)").
+- If two grades are the same material in different conditions (e.g., Hot Finished vs Cold Finished), only recommend the one that best matches the user's needs — do NOT present both as separate options unless the condition materially changes the recommendation.
+- The "explanation" field should be a brief intro (1-2 sentences) summarizing the recommendation. Do NOT repeat all property details here — the card UI will display them. Focus on the overall recommendation logic and any caveats.
+
 RESPONSE FORMAT:
 You must respond with ONLY a valid JSON object (no markdown, no code fences) matching this structure:
 {
@@ -311,17 +319,17 @@ You must respond with ONLY a valid JSON object (no markdown, no code fences) mat
   "selectedGrades": [
     {
       "grade": "exact grade name from the database",
-      "reason": "why this grade fits the user's requirements"
+      "reason": "2-3 sentence plain-language explanation of why this grade fits the user's requirements. Use qualitative labels (e.g., 'excellent weldability', 'high corrosion resistance') instead of raw scores. Mention the user's specific application or environment."
     }
   ],
-  "explanation": "Your full natural-language response to the user. Include the recommended grades, their key properties (using ONLY database values), why they fit, trade-offs, and any requirements that could not be evaluated. Use plain text (no markdown headers). Use line breaks for readability."
+  "explanation": "1-2 sentence summary of the recommendation. Do NOT dump property values here — the UI displays them in cards. Mention any requirements that could not be evaluated or important caveats."
 }
 
 GUIDELINES:
 - Set "isRecommendation" to true if you are recommending grades. Set to false for general questions or follow-ups.
 - Set "isGeneralQuestion" to true if the user is asking a general question (e.g., "What is PREN?", "Explain UTS").
 - "selectedGrades" should be empty if no suitable grade exists or if it's a general question.
-- The "explanation" is the main text the user sees. Make it clear, helpful, and grounded in database values.
+- The "explanation" is a brief intro shown above the recommendation cards. Keep it short.
 - For follow-up questions in a conversation, use the conversation context to maintain relevance.`;
 }
 
